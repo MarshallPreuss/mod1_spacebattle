@@ -18,6 +18,7 @@ const attack = () => {
     let attackButton = document.getElementById('attack-button');
     let restartButton = document.getElementById('restart');
     let message = document.getElementById('message');
+    let retreatButton = document.getElementById('retreat');
     let playerAttack = mainAttack(player.firepower);
     alien.health -= playerAttack;
     printToScreen();
@@ -26,6 +27,7 @@ const attack = () => {
         message.innerText = "You Won!"
         attackButton.hidden = true;
         restartButton.hidden = false;
+        retreatButton.hidden = true;
         return;
     }
 
@@ -41,6 +43,7 @@ const attack = () => {
             message.innerText = "You Lost!"
             attackButton.hidden = true;
             restartButton.hidden = false;
+            retreatButton.hidden = true;
             return;
         }
 
@@ -56,12 +59,10 @@ const GameOver = (health) => {
     return health <= 0;
 }
 const restart = () => {
-    player.health = 20;
-    alien.health = 20;
-    document.getElementById('attack-button').innerText = "";
-    document.getElementById('restart').hidden = true;
-    document.getElementById('message').hidden = false;
-    printToScreen();
+    location.reload();
+}
+const retreat = () => {
+    location.reload();
 }
 
 printToScreen();
